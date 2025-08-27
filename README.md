@@ -1,2 +1,17 @@
 # dotnet-lib-template
-dotnet-lib-template
+
+Template to create a dotnet library.
+
+## Structure
+
+[C# unit test testing tells us...](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-xunit)
+
+```bash
+dotnet new sln -o MyLibTemplate
+cd ./MyLibTemplate
+dotnet new classlib -o MyLibTemplate
+dotnet sln add ./MyLibTemplate/MyLibTemplate.csproj
+dotnet new xunit -o MyLibTemplate.Tests
+dotnet sln add ./MyLibTemplate.Tests/MyLibTemplate.Tests.csproj
+dotnet new console -n MyLibTemplate.Console
+```
