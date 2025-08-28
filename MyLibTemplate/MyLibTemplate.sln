@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibTemplate", "MyLibTempl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibTemplate.Tests", "MyLibTemplate.Tests\MyLibTemplate.Tests.csproj", "{8E81B304-48C3-4D05-93D1-F073A9A6DD61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibTemplate.Console", "MyLibTemplate.Console\MyLibTemplate.Console.csproj", "{D071370B-AF0A-483A-9172-75DF6590A67B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{8E81B304-48C3-4D05-93D1-F073A9A6DD61}.Release|x64.Build.0 = Release|Any CPU
 		{8E81B304-48C3-4D05-93D1-F073A9A6DD61}.Release|x86.ActiveCfg = Release|Any CPU
 		{8E81B304-48C3-4D05-93D1-F073A9A6DD61}.Release|x86.Build.0 = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|x64.Build.0 = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Debug|x86.Build.0 = Debug|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|x64.ActiveCfg = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|x64.Build.0 = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|x86.ActiveCfg = Release|Any CPU
+		{D071370B-AF0A-483A-9172-75DF6590A67B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

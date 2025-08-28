@@ -15,5 +15,8 @@ dotnet new xunit -o MyLibTemplate.Tests
 dotnet sln add ./MyLibTemplate.Tests/MyLibTemplate.Tests.csproj
 dotnet add MyLibTemplate.Tests/MyLibTemplate.Tests.csproj reference MyLibTemplate/MyLibTemplate.csproj
 dotnet new console -n MyLibTemplate.Console
+dotnet add .\MyLibTemplate.Console\MyLibTemplate.Console.csproj reference .\MyLibTemplate\MyLibTemplate.csproj
+dotnet sln add ./MyLibTemplate.Console/MyLibTemplate.Console.csproj
+dotnet build
 dotnet test
 ```
