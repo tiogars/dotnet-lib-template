@@ -12,6 +12,7 @@ Template to create a dotnet library.
 
 ```pwsh
 dotnet new sln -o MyLibTemplate
+
 cd ./MyLibTemplate
 
 dotnet new classlib -o MyLibTemplate
