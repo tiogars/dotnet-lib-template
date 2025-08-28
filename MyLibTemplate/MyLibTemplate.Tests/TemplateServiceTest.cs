@@ -1,14 +1,10 @@
 // File: MyLibTemplate/MyLibTemplate/TemplateServiceTest.cs
 using Xunit;
 
+using MyLibTemplate; // Add this if TemplateService is in MyLibTemplate namespace
+
 namespace MyLibTemplate.Tests
 {
-    // Minimal Person class for testing
-    public class Person
-    {
-        public string Name { get; set; } = string.Empty;
-    }
-
     public class TemplateServiceTest
     {
         [Fact]
@@ -35,7 +31,7 @@ namespace MyLibTemplate.Tests
             var result = service.SayHello(null);
 
             // Assert
-            Assert.Equal("Hello  from the template service !", result);
+            Assert.Equal("Hello from the template service !", result);
         }
 
         [Fact]
@@ -49,7 +45,7 @@ namespace MyLibTemplate.Tests
             var result = service.SayHello(person);
 
             // Assert
-            Assert.Equal("Hello  from the template service !", result);
+            Assert.Equal("Hello from the template service !", result);
         }
 
         [Fact]
@@ -63,7 +59,7 @@ namespace MyLibTemplate.Tests
             var result = service.SayHello(person);
 
             // Assert
-            Assert.Equal("Hello    from the template service !", result);
+            Assert.Equal("Hello from the template service !", result);
         }
     }
 }

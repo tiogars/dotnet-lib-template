@@ -12,6 +12,11 @@ public class TemplateService
     /// <returns>A greeting message including the person's name.</returns>
     public string SayHello(Person? person)
     {
-        return $"Hello {person?.Name ?? string.Empty} from the template service !";
+        string personName = string.Empty;
+        if (person != null && !string.IsNullOrWhiteSpace(person.Name))
+        {
+            personName = person.Name.Trim() + " ";
+        }
+        return $"Hello {personName}from the template service !";
     }
 }
