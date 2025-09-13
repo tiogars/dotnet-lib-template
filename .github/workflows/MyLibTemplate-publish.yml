@@ -1,4 +1,4 @@
-name: Release MyLibTemplate
+name: Publish MyLibTemplate to Nuget
 
 on:
   release:

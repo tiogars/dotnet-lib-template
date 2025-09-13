@@ -13,6 +13,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      packages: write
+
     steps:
     - uses: actions/checkout@v4
 
@@ -24,18 +28,10 @@ jobs:
     
     - run: dotnet restore --use-lock-file
 
-    - run: dotnet build --no-restore --configuration Release --runtime win-x64 --self-contained true
+    - run: dotnet build --no-restore --configuration Release
 
-    - run: zip -r MyLibTemplate.Console.zip MyLibTemplate.Console/bin/Release/net8.0/
+    - run: dotnet publish MyLibTemplate.Console/MyLibTemplate.Console.csproj -c Release -r win-x64 --self-contained true -o publish/console
 
-    - run: zip -r MyLibTemplate.Web.zip MyLibTemplate.Web/bin/Release/net8.0/
+    - run: zip -r MyLibTemplate.Console.zip publish/console
 
-    - uses: actions/upload-artifact@v4
-      with:
-        name: MyLibTemplate.Console
-        path: MyLibTemplate.Console.zip
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: MyLibTemplate.Web
-        path: MyLibTemplate.Web.zip
+    - run: gh release create ${{ inputs.version }} MyLibTemplate.Console.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
