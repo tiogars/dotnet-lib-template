@@ -1,4 +1,4 @@
-name: Build and test .NET
+name: Build and test MyLibTemplate.Console
 
 on:
   push:
