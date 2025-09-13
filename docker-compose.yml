@@ -2,7 +2,7 @@ name: MyLibTemplate.Api
 
 services:
   mylibtemplate.api:
-    image: ${DOCKER_REGISTRY-}mylibtemplate.api
+    image: ghcr.io/tiogars/dotnet-lib-template/dotnet-lib-template-api:latest
     build:
       context: .
       dockerfile: MyLibTemplate.Api/Dockerfile
