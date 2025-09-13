@@ -32,14 +32,14 @@ jobs:
 
     - run: dotnet publish MyLibTemplate.Console/MyLibTemplate.Console.csproj -c Release -r win-x64 --self-contained true
     - run: |
-        cd ./MyLibTemplate.Console/bin/Release/net8.0
-        zip -r ../../../../MyLibTemplate.Console-${{ inputs.version }}.zip .
+        cd ./MyLibTemplate.Console/bin/Release/net8.0/win-x64/publish
+        zip -r ../../../../../../MyLibTemplate.Console-${{ inputs.version }}.zip .
         cd $GITHUB_WORKSPACE
 
     - run: dotnet publish MyLibTemplate.Web/MyLibTemplate.Web.csproj -c Release -r win-x64 --self-contained true
     - run: |
-        cd ./MyLibTemplate.Web/bin/Release/net8.0
-        zip -r ../../../../MyLibTemplate.Web-${{ inputs.version }}.zip .
+        cd ./MyLibTemplate.Web/bin/Release/net8.0/win-x64/publish
+        zip -r ../../../../../../MyLibTemplate.Web-${{ inputs.version }}.zip .
         cd $GITHUB_WORKSPACE
 
     - run: gh release create ${{ inputs.version }} MyLibTemplate.Console-${{ inputs.version }}.zip MyLibTemplate.Web-${{ inputs.version }}.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
