@@ -42,6 +42,12 @@ jobs:
         zip -r ../../../../../../MyLibTemplate.Web-${{ inputs.version }}.zip .
         cd $GITHUB_WORKSPACE
 
+    - run: dotnet publish MyLibTemplate.Api/MyLibTemplate.Api.csproj -c Release -r win-x64 --self-contained true
+    - run: |
+        cd ./MyLibTemplate.Api/bin/Release/net8.0/win-x64/publish
+        zip -r ../../../../../../MyLibTemplate.Api-${{ inputs.version }}.zip .
+        cd $GITHUB_WORKSPACE
+
     - run: gh release create ${{ inputs.version }} MyLibTemplate.Console-${{ inputs.version }}.zip MyLibTemplate.Web-${{ inputs.version }}.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
