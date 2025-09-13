@@ -1,16 +1,17 @@
 name: Release MyLibTemplate.Console
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number to release'
+        required: true
+        default: '1.0.0'
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  build:
 
-    permissions:
-      contents: write
-      packages: write
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -19,17 +20,17 @@ jobs:
       with:
         dotnet-version: 8
         cache: true
-        cache-dependency-path: MyLibTemplate/MyLibTemplate.csproj
-        source-url: https://nuget.pkg.github.com/tiogars/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        cache-dependency-path: MyLibTemplate.Console/MyLibTemplate.Console.csproj
     
     - run: dotnet restore --use-lock-file
 
-    - run: dotnet build "MyLibTemplate/MyLibTemplate.csproj" --no-restore --configuration Release
+    - run: dotnet build --no-restore --configuration Release
 
-    - run: dotnet test "MyLibTemplate/MyLibTemplate.csproj" --no-build --verbosity normal
+    - run: Compress-Archive -Path MyLibTemplate.Console/bin/Release/net8.0/* -DestinationPath MyLibTemplate.Console.zip
 
-    - run: dotnet pack --configuration Release
+    - run: Compress-Archive -Path MyLibTemplate.Web/bin/Release/net8.0/* -DestinationPath MyLibTemplate.Web.zip
 
-    - run: dotnet nuget push "MyLibTemplate/bin/Release/*.nupkg"
+    - uses: actions/upload-artifact@v3
+      with:
+        name: MyLibTemplate.Console
+        path: MyLibTemplate.Console.zip
