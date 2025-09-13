@@ -1,0 +1,35 @@
+name: Release MyLibTemplate.Console
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8
+        cache: true
+        cache-dependency-path: MyLibTemplate/MyLibTemplate.csproj
+        source-url: https://nuget.pkg.github.com/tiogars/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    
+    - run: dotnet restore --use-lock-file
+
+    - run: dotnet build "MyLibTemplate/MyLibTemplate.csproj" --no-restore --configuration Release
+
+    - run: dotnet test "MyLibTemplate/MyLibTemplate.csproj" --no-build --verbosity normal
+
+    - run: dotnet pack --configuration Release
+
+    - run: dotnet nuget push "MyLibTemplate/bin/Release/*.nupkg"

@@ -1,4 +1,4 @@
-name: Release .NET
+name: Release MyLibTemplate
 
 on:
   release:
