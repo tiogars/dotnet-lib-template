@@ -31,11 +31,17 @@ jobs:
     - run: dotnet build --no-restore --configuration Release
 
     - run: dotnet publish MyLibTemplate.Console/MyLibTemplate.Console.csproj -c Release -r win-x64 --self-contained true
-    - run: zip -r MyLibTemplate.Console.zip ./MyLibTemplate.Console/bin/Release/net8.0/win-x64/publish/*
+    - run: |
+        cd ./MyLibTemplate.Console/bin/Release/net8.0
+        zip -r ../../../../MyLibTemplate.Console-${{ inputs.version }}.zip .
+        cd $GITHUB_WORKSPACE
 
     - run: dotnet publish MyLibTemplate.Web/MyLibTemplate.Web.csproj -c Release -r win-x64 --self-contained true
-    - run: zip -r MyLibTemplate.Web.zip ./MyLibTemplate.Web/bin/Release/net8.0/win-x64/publish/*
+    - run: |
+        cd ./MyLibTemplate.Web/bin/Release/net8.0
+        zip -r ../../../../MyLibTemplate.Web-${{ inputs.version }}.zip .
+        cd $GITHUB_WORKSPACE
 
-    - run: gh release create ${{ inputs.version }} MyLibTemplate.Console.zip MyLibTemplate.Web.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
+    - run: gh release create ${{ inputs.version }} MyLibTemplate.Console-${{ inputs.version }}.zip MyLibTemplate.Web-${{ inputs.version }}.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
