@@ -1,0 +1,27 @@
+name: Build and test .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8
+        cache: true
+        cache-dependency-path: MyLibTemplate.Console/MyLibTemplate.Console.csproj
+    
+    - run: dotnet restore --use-lock-file
+
+    - run: dotnet build "MyLibTemplate.Console/MyLibTemplate.Console.csproj" --no-restore --configuration Release
+
+    - run: dotnet test "MyLibTemplate.Console/MyLibTemplate.Console.csproj" --no-build --verbosity normal
