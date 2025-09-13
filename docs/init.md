@@ -45,6 +45,12 @@ To declare a MVC web app
 dotnet new mvc -n MyLibTemplate.Web -au None --framework "net8.0"
 dotnet sln add ./MyLibTemplate.Web/MyLibTemplate.Web.csproj
 ```
+To declare an API web app
+
+```pwsh
+dotnet new webapi --use-controllers -o MyLibTemplate.Api
+dotnet sln add ./MyLibTemplate.Api/MyLibTemplate.Api.csproj
+```
 
 To build and test
 
@@ -64,4 +70,5 @@ To run console binary
 .\MyLibTemplate.Console\bin\Debug\net8.0\MyLibTemplate.Console.exe
 .\MyLibTemplate.Console\bin\Debug\net8.0\MyLibTemplate.Console.exe "Alice"
 .\MyLibTemplate.Web\bin\Debug\net8.0\MyLibTemplate.Web.exe
+.\MyLibTemplate.Api\bin\Debug\net8.0\MyLibTemplate.Api.exe
 ```
