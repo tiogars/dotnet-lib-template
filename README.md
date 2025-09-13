@@ -13,3 +13,7 @@ Template to create a dotnet library.
 ## Init of this project
 
 [Procedure](./docs/init.md)
+
+## Release
+
+[Procedure](./docs/release.md)
