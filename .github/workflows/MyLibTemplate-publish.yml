@@ -3,6 +3,7 @@ name: Publish library
 on:
   release:
     types: [created, published]
+  workflow_dispatch:
 
 jobs:
   release:
