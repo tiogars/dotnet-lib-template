@@ -28,10 +28,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
-        run: |
-          docker build -t ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest .
+      - run: |
+          docker build -f MyLibTemplate.Api/Dockerfile -t ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest .
 
-      - name: Push Docker image
-        run: |
+      - run: |
           docker push ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest
