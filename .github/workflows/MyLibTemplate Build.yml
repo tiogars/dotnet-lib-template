@@ -1,0 +1,30 @@
+name: Build and test .NET
+
+on:
+  push:
+    paths:
+    - 'MyLibTemplate/**'
+    - '!**.md'
+  pull_request:
+    paths:
+    - 'MyLibTemplate/**'
+    - '!**.md'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8
+        cache: true
+    
+    - run: dotnet restore --use-lock-file
+
+    - run: dotnet build "MyLibTemplate" --no-restore --configuration Release
+
+    - run: dotnet test "MyLibTemplate" --no-build --verbosity normal
