@@ -1,4 +1,4 @@
-name: Release MyLibTemplate artefacts
+name: Release
 
 on:
   workflow_dispatch:
@@ -35,3 +35,5 @@ jobs:
     - run: zip -r MyLibTemplate.Console.zip publish/console
 
     - run: gh release create ${{ inputs.version }} MyLibTemplate.Console.zip --title "Release ${{ inputs.version }}" --notes "${{ inputs.version }}"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
