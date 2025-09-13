@@ -21,8 +21,8 @@ jobs:
         cache: true
         cache-dependency-path: MyLibTemplate/MyLibTemplate.csproj
         source-url: https://nuget.pkg.github.com/tiogars/index.json
-      # env:
-      #   NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     
     - run: dotnet restore --use-lock-file
 
