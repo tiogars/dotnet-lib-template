@@ -54,6 +54,6 @@ dotnet build
 To run console binary
 
 ```pwsh
-.\MyLibTemplate.Console\bin\Debug\net9.0\MyLibTemplate.Console.exe
-.\MyLibTemplate.Console\bin\Debug\net9.0\MyLibTemplate.Console.exe "Alice"
+.\MyLibTemplate.Console\bin\Debug\net8.0\MyLibTemplate.Console.exe
+.\MyLibTemplate.Console\bin\Debug\net8.0\MyLibTemplate.Console.exe "Alice"
 ```
