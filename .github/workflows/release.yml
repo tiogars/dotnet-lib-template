@@ -1,4 +1,4 @@
-name: Release MyLibTemplate.Console
+name: Release MyLibTemplate artefacts
 
 on:
   workflow_dispatch:
@@ -26,11 +26,16 @@ jobs:
 
     - run: dotnet build --no-restore --configuration Release
 
-    - run: Compress-Archive -Path MyLibTemplate.Console/bin/Release/net8.0/* -DestinationPath MyLibTemplate.Console.zip
+    - run: zip -r MyLibTemplate.Console.zip MyLibTemplate.Console/bin/Release/net8.0/
 
-    - run: Compress-Archive -Path MyLibTemplate.Web/bin/Release/net8.0/* -DestinationPath MyLibTemplate.Web.zip
+    - run: zip -r MyLibTemplate.Web.zip MyLibTemplate.Web/bin/Release/net8.0/
 
     - uses: actions/upload-artifact@v4
       with:
         name: MyLibTemplate.Console
         path: MyLibTemplate.Console.zip
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: MyLibTemplate.Web
+        path: MyLibTemplate.Web.zip
