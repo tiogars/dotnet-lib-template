@@ -23,8 +23,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
-          cd ./MyLibTemplate.Api
-          docker build -t ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest .
+          docker build -t ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest ./MyLibTemplate.Api
 
       - run: |
           docker push ghcr.io/${{ github.repository }}/dotnet-lib-template-api:latest
