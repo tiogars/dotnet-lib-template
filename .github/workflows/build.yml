@@ -2,17 +2,9 @@ name: Build and test .NET
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'MyLibTemplate/**'
-      - '!**.md'
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
-    paths:
-      - 'MyLibTemplate/**'
-      - '!**.md'
+    branches: [ "main" ]
 
 jobs:
   build:
