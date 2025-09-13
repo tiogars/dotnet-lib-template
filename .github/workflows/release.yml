@@ -33,5 +33,5 @@ jobs:
 
     - run: dotnet nuget add source "https://nuget.pkg.github.com/tiogars/index.json" --name "github" --username "tiogars" --password "${{ secrets.GITHUB_TOKEN }}" --store-password-in-clear-text
 
-    - run: dotnet nuget push "MyLibTemplate/bin/Release/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }}
+    - run: dotnet nuget push "MyLibTemplate/bin/Release/*.nupkg" --api-key "${{ secrets.GITHUB_TOKEN }}" --source "github"
       
