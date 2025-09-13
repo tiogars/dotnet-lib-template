@@ -24,7 +24,7 @@ jobs:
     
     - run: dotnet restore --use-lock-file
 
-    - run: dotnet build --no-restore --configuration Release
+    - run: dotnet build --no-restore --configuration Release --runtime win-x64 --self-contained true
 
     - run: zip -r MyLibTemplate.Console.zip MyLibTemplate.Console/bin/Release/net8.0/
 
