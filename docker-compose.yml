@@ -1,25 +1,26 @@
 name: MyLibTemplate.Api
 
+# https://docs.docker.com/reference/compose-file/services/
 services:
   mylibtemplate.api:
-    image: ghcr.io/tiogars/dotnet-lib-template/dotnet-lib-template-api:latest
-    build:
-      context: .
-      dockerfile: MyLibTemplate.Api/Dockerfile
-    ports:
+
+    container_name : mylibtemplate.api # https://docs.docker.com/reference/compose-file/services/#container_name
+    hostname: mylibtemplate.api # https://docs.docker.com/reference/compose-file/services/#hostname
+    image: ghcr.io/tiogars/dotnet-lib-template/dotnet-lib-template-api:latest # https://docs.docker.com/reference/compose-file/services/#image
+
+    # https://docs.docker.com/reference/compose-file/build/#using-build-and-image
+    build: # https://docs.docker.com/reference/compose-file/build/
+      context: . # https://docs.docker.com/reference/compose-file/build/#context
+      dockerfile: MyLibTemplate.Api/Dockerfile # https://docs.docker.com/reference/compose-file/build/#dockerfile
+
+    ports: # https://docs.docker.com/reference/compose-file/services/#ports
       - "5000:80"
-    environment:
+
+    environment: # https://docs.docker.com/reference/compose-file/services/#environment
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-    # depends_on:
-    #   - mylibtemplate.db
 
-  # mylibtemplate.db:
-  #   image: mcr.microsoft.com/mssql/server:2022-latest
-  #   environment:
-  #     SA_PASSWORD: "Your_password123"
-  #     ACCEPT_EULA: "Y"
-  #   ports:
-  #     - "1433:1433"
-  #   volumes:
-  #     - sqlvolume:/var/opt/mssql
+    cpu_count : 1 # https://docs.docker.com/reference/compose-file/services/#cpu_count
+    cpu_percent : 50 # https://docs.docker.com/reference/compose-file/services/#cpu_percent
+    mem_limit : 512m # https://docs.docker.com/reference/compose-file/services/#mem_limit
+    restart: unless-stopped # https://docs.docker.com/reference/compose-file/services/#restart
